@@ -1,0 +1,10 @@
+experiencia com freelancer utilizando next js, react e tailwind
+
+usava o vite com o react, tailwind e typescript e migrei pro next js, que possui uma performance de carregamento muito melhor 
+devido aos server components e client components apenas para componentes que precisam de interatividade (reduz o js enviado ao browser) e um melhor SEO
+pois nao precisa esperar o js carregar. o roteamento já vem embutido, baseado na estrutura de pastas
+
+Na algar eu faço muito consultas em banco com o dbeaver seja pra teste, pra obter informação ou pra desenvolver automaçoes. entao muitas vezes
+é necessario analisar a modelagem relacional das tabelas pra entender as relações, pra pegar as chaves estrangeiras e fazer consultas. um projeto pessoal 
+que estamos fazendo usando supabase tambem modelei a estrutura relacional do 0, apliquei politicas RLS - para apenas o usuario ver seus gados, editar, criar
+e excluir

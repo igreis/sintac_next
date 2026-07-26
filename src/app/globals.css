@@ -1,0 +1,417 @@
+@import "tailwindcss" source(none);
+@source "../";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system — Sintac
+ *
+ * Cores extraídas da logo:
+ *   Azul       #4A7CC7  → oklch(0.52 0.15 250)
+ *   Vinho      #7A1F1F  → oklch(0.32 0.14 20)
+ *   Grafite    #2D2D2D  → oklch(0.22 0.01 250)
+ *   Branco     #FFFFFF  → oklch(1 0 0)
+ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-primary-glow: var(--primary-glow);
+
+  /* Cores da logo expostas como utilities */
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-blue-light: var(--brand-blue-light);
+  --color-brand-wine: var(--brand-wine);
+  --color-brand-wine-light: var(--brand-wine-light);
+  --color-brand-graphite: var(--brand-graphite);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* ── Cores brutas da logo ─────────────────────────────── */
+  --brand-blue: oklch(0.52 0.15 250);
+  /* azul painel frontal  */
+  --brand-blue-light: oklch(0.68 0.14 250);
+  /* azul claro / hover   */
+  --brand-wine: oklch(0.32 0.14 20);
+  /* vinho / bordô base   */
+  --brand-wine-light: oklch(0.48 0.14 20);
+  /* vinho claro / hover  */
+  --brand-graphite: oklch(0.22 0.01 250);
+  /* grafite painel       */
+
+  /* ── Semântica mapeada na paleta da logo ──────────────── */
+  --background: oklch(0.18 0.02 255);
+  /* fundo geral — grafite profundo   */
+  --foreground: oklch(0.96 0.005 250);
+  /* texto principal — quase branco   */
+
+  --card: oklch(0.24 0.03 252);
+  /* card — grafite levemente azulado */
+  --card-foreground: oklch(0.96 0.005 250);
+
+  --popover: oklch(0.24 0.03 252);
+  --popover-foreground: oklch(0.96 0.005 250);
+
+  --primary: oklch(0.52 0.15 250);
+  /* azul da logo                     */
+  --primary-foreground: oklch(0.97 0 0);
+  /* branco sobre azul                */
+  --primary-glow: oklch(0.68 0.14 250);
+  /* azul claro para brilhos          */
+
+  --secondary: oklch(0.32 0.14 20);
+  /* vinho da logo                    */
+  --secondary-foreground: oklch(0.97 0 0);
+  /* branco sobre vinho               */
+
+  --muted: oklch(0.28 0.02 252);
+  /* grafite médio                    */
+  --muted-foreground: oklch(0.72 0.04 248);
+  /* texto secundário                 */
+
+  --accent: oklch(0.48 0.14 20);
+  /* vinho claro — destaque           */
+  --accent-foreground: oklch(0.97 0 0);
+
+  --destructive: oklch(0.58 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  --border: oklch(0.52 0.15 250 / 22%);
+  /* borda azul sutil                 */
+  --input: oklch(0.30 0.03 252);
+  --ring: oklch(0.52 0.15 250);
+
+  /* ── Gradientes ───────────────────────────────────────── */
+  --gradient-hero:
+    radial-gradient(ellipse 80% 60% at 50% 0%,
+      oklch(0.52 0.15 250 / 0.55), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 100%,
+      oklch(0.32 0.14 20 / 0.40), transparent 60%),
+    linear-gradient(180deg,
+      oklch(0.22 0.03 252),
+      oklch(0.15 0.02 255));
+
+  --gradient-primary:
+    linear-gradient(135deg,
+      oklch(0.32 0.14 20),
+      /* vinho logo  */
+      oklch(0.48 0.14 20));
+  /* vinho claro */
+
+  --gradient-secondary:
+    linear-gradient(135deg,
+      oklch(0.32 0.14 20),
+      /* vinho logo  */
+      oklch(0.48 0.14 20));
+  /* vinho claro */
+
+  --gradient-card:
+    linear-gradient(160deg,
+      oklch(0.52 0.10 250 / 0.30),
+      oklch(0.22 0.03 252 / 0.20));
+
+  --gradient-mesh:
+    conic-gradient(from 180deg at 50% 50%,
+      oklch(0.52 0.15 250 / 0.4),
+      oklch(0.32 0.14 20 / 0.4),
+      oklch(0.22 0.01 250 / 0.4),
+      oklch(0.52 0.15 250 / 0.4));
+
+  /* ── Sombras ──────────────────────────────────────────── */
+  --shadow-glow:
+    0 0 100px -10px oklch(0.68 0.15 250 / 0.5),
+    0 0 40px -5px oklch(0.52 0.15 250 / 0.4);
+
+  --shadow-wine-glow:
+    0 0 80px -10px oklch(0.48 0.14 20 / 0.45),
+    0 0 30px -5px oklch(0.32 0.14 20 / 0.35);
+
+  --shadow-elegant:
+    0 40px 100px -20px oklch(0.10 0.05 252 / 0.7),
+    0 0 0 1px oklch(0.68 0.14 250 / 0.12);
+
+  --shadow-hud:
+    inset 0 1px 0 0 oklch(1 0 0 / 0.12),
+    0 0 30px -5px oklch(0.68 0.14 250 / 0.35);
+
+  --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ── Charts ───────────────────────────────────────────── */
+  --chart-1: oklch(0.52 0.15 250);
+  /* azul logo        */
+  --chart-2: oklch(0.32 0.14 20);
+  /* vinho logo        */
+  --chart-3: oklch(0.68 0.14 250);
+  /* azul claro        */
+  --chart-4: oklch(0.48 0.14 20);
+  /* vinho claro       */
+  --chart-5: oklch(0.60 0.08 252);
+  /* azul-grafite      */
+
+  /* ── Sidebar ──────────────────────────────────────────── */
+  --sidebar: oklch(0.20 0.03 253);
+  --sidebar-foreground: oklch(0.96 0.005 250);
+  --sidebar-primary: oklch(0.52 0.15 250);
+  --sidebar-primary-foreground: oklch(0.97 0 0);
+  --sidebar-accent: oklch(0.32 0.14 20);
+  --sidebar-accent-foreground: oklch(0.97 0 0);
+  --sidebar-border: oklch(0.52 0.15 250 / 18%);
+  --sidebar-ring: oklch(0.52 0.15 250);
+}
+
+.dark {
+  /* No tema dark mantemos a mesma paleta — já é escura por natureza */
+  --background: oklch(0.14 0.02 255);
+  --foreground: oklch(0.97 0.005 250);
+  --card: oklch(0.20 0.03 253);
+  --card-foreground: oklch(0.97 0.005 250);
+  --popover: oklch(0.20 0.03 253);
+  --popover-foreground: oklch(0.97 0.005 250);
+  --primary: oklch(0.68 0.14 250);
+  /* azul claro no dark   */
+  --primary-foreground: oklch(0.15 0.04 255);
+  --secondary: oklch(0.48 0.14 20);
+  /* vinho claro no dark  */
+  --secondary-foreground: oklch(0.97 0 0);
+  --muted: oklch(0.24 0.03 252);
+  --muted-foreground: oklch(0.68 0.04 248);
+  --accent: oklch(0.48 0.14 20);
+  --accent-foreground: oklch(0.97 0 0);
+  --destructive: oklch(0.65 0.24 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.68 0.14 250);
+  --chart-1: oklch(0.68 0.14 250);
+  --chart-2: oklch(0.48 0.14 20);
+  --chart-3: oklch(0.52 0.15 250);
+  --chart-4: oklch(0.32 0.14 20);
+  --chart-5: oklch(0.55 0.08 252);
+  --sidebar: oklch(0.20 0.03 253);
+  --sidebar-foreground: oklch(0.97 0.005 250);
+  --sidebar-primary: oklch(0.68 0.14 250);
+  --sidebar-primary-foreground: oklch(0.15 0.04 255);
+  --sidebar-accent: oklch(0.48 0.14 20);
+  --sidebar-accent-foreground: oklch(0.97 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.68 0.14 250);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    color: var(--color-foreground);
+  }
+}
+
+@layer utilities {
+  @keyframes hud-scan {
+    0% {
+      transform: translateY(-100%);
+    }
+
+    100% {
+      transform: translateY(100vh);
+    }
+  }
+
+  @keyframes hud-rotate {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes hud-pulse {
+
+    0%,
+    100% {
+      opacity: 0.4;
+      transform: scale(1);
+    }
+
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% center;
+    }
+
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-hud-scan {
+    animation: hud-scan 8s linear infinite;
+  }
+
+  .animate-hud-rotate {
+    animation: hud-rotate 30s linear infinite;
+  }
+
+  .animate-hud-pulse {
+    animation: hud-pulse 3s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    background-size: 200% auto;
+    animation: shimmer 4s linear infinite;
+  }
+
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  .hud-corners {
+    position: relative;
+  }
+
+  .hud-corners::before,
+  .hud-corners::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: var(--primary-glow);
+    pointer-events: none;
+  }
+
+  .hud-corners::before {
+    top: -1px;
+    left: -1px;
+    border-top: 1.5px solid;
+    border-left: 1.5px solid;
+  }
+
+  .hud-corners::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 1.5px solid;
+    border-right: 1.5px solid;
+  }
+
+  /* Gradientes de texto */
+  .text-gradient-primary {
+    background-image: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-secondary {
+    background-image: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Sombras como utilities */
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-wine-glow {
+    box-shadow: var(--shadow-wine-glow);
+  }
+
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .shadow-hud {
+    box-shadow: var(--shadow-hud);
+  }
+}
+
+#integracoes-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 18s linear infinite;
+}
+
+
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+#integracoes-mask {
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 0%, black 15%, black 85%, transparent 100%);
+  mask-image: linear-gradient(to right,
+      transparent 0%, black 15%, black 85%, transparent 100%);
+}
